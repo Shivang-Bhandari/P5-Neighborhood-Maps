@@ -34,13 +34,13 @@
 			<div class="col-sm-2">
 				<div id="error"><h4><span data-bind="text: errorDisplay"></span></h4></div>
 				<div style="width: 100%;" class="input-group">
-					<input id="filterInputText" type="text" class="form-control" placeholder="Find Location..." data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: applyFilter }">
+					<input id="filterInputText" type="text" class="form-control" placeholder="Find Location..." data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: searchModifier }">
 				</div>
 			    <br>
 
 				<!-- KnockoutJS Binds these from mapList within the viewModel-->
 				<ul class="list-group" data-bind="foreach: mapList">
-				  <li><a class="list-group-item hvr-bounce-to-right" href="#" data-bind="css: {active: selected}, text: name, visible: show, click: $parent.setSelected"></a>
+				  <li><a class="list-group-item hvr-bounce-to-right" href="#" data-bind="css: {active: selected}, text: name, visible: show, click: $parent.selectMarker"></a>
 					</li>
 				</ul>
 			</div>
