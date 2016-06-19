@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shivang's Neighborhood Map</title>
+
+	<!--Fonts-->
+  <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+
+  <!--CSS-->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-10	">
+				<h1 id="topTitle">PATIALA : The Royal City</h1>
+			</div>
+
+		</div>
+		<hr />
+		<div class="row" style="margin-top: 2%;">
+
+			<div class="col-md-10">
+		    	<div id="map"></div>
+			</div>
+
+			<div class="col-sm-2">
+				<div id="error"><h4><span data-bind="text: errorDisplay"></span></h4></div>
+				<div style="width: 100%;" class="input-group">
+					<input id="filterInputText" type="text" class="form-control" placeholder="Find Location..." data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: applyFilter }">
+				</div>
+			    <br>
+
+				<!-- KnockoutJS Binds these from mapList within the viewModel-->
+				<ul class="list-group" data-bind="foreach: mapList">
+				  <li><a class="list-group-item hvr-bounce-to-right" href="#" data-bind="css: {active: selected}, text: name, visible: show, click: $parent.setSelected"></a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<p id="map-error"></p>
+
+	<!--jQuery-->
+	<script type='text/javascript' src='bower_components/jquery/dist/jquery.min.js'></script>
+
+	<script type='text/javascript' src='bower_components/knockout/dist/knockout.js'></script>
+	<script type="text/javascript">
+	    var map, infoWindow;
+	    function initMap() {
+	      map = new google.maps.Map(
+	          document.getElementById('map'),
+	          {
+	            center: {lat: 30.337501, lng: 76.383205},
+	            zoom: 15,
+	            mapTypeId: google.maps.MapTypeId.TERRAIN //type set to terrain
+	          }
+	        );
+
+	      infowindow = new google.maps.InfoWindow();
+	      //To Activate Knockout through app.js
+	      ko.applyBindings(new ViewModel());
+	    }
+	    function googleError(){
+	      document.getElementById('map-error').innerHTML = "Error in Map!"
+
+	    }
+	  </script>
+  <script async defer
+    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZFbc0O6X0lxBdrHgh8aN-syaZ3pr5mQ&callback=initMap" onerror="googleError()">
+  </script>
+
+
+	<script src="js/app.js"></script>
+
+</body>
+</html>

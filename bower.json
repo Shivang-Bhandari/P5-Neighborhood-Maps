@@ -1,0 +1,9 @@
+{
+  "name": "Vardaan's Neighborhood Map",
+  "description": "Project Using KnockoutJS Framework and Other APIs",
+  "version": "1.0",
+  "dependencies": {
+    "knockout": "~3.4.0",
+    "jquery": "~2.2.0"
+  }
+}
