@@ -69,13 +69,13 @@
 	      //To Activate Knockout through app.js
 	      ko.applyBindings(new ViewModel());
 	    }
-	    function googleError(){
-	      document.getElementById('map-error').innerHTML = "Error in Map!"
+	    function mapError(){
+	      document.getElementById('map-error').append = "Error in Map!"
 
 	    }
 	  </script>
   <script async defer
-    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZFbc0O6X0lxBdrHgh8aN-syaZ3pr5mQ&callback=initMap" onerror="googleError()">
+    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZFbc0O6X0lxBdrHgh8aN-syaZ3pr5mQ&callback=initMap" onerror="mapError()">
   </script>
 
 
