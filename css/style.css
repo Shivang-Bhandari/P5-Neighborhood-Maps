@@ -73,11 +73,12 @@ hr{
 }
 
 #map {
-	height: 475px;
+	height: 100%;
 	width: 100%;
 	-webkit-box-shadow: 3px 13px 16px -1px rgba(0,0,0,0.60);
 	-moz-box-shadow: 3px 13px 16px -1px rgba(0,0,0,0.60);
 	box-shadow:3px 13px 16px -1px rgba(0,0,0,0.60);
+	position: absolute;
 }
 
 li {
@@ -85,6 +86,33 @@ li {
 	-webkit-box-shadow: 3px 13px 16px -1px rgba(0,0,0,0.60);
 	-moz-box-shadow: 3px 13px 16px -1px rgba(0,0,0,0.60);
 	box-shadow: 3px 13px 16px -1px rgba(0,0,0,0.60);
+}
+
+.menu {
+        margin-top: 0.8%;
+				margin-left: 10%;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#searchBox {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+	position: relative;
+}
+
+#searchBox:focus {
+  border-color: #4d90fe;
 }
 
 /* Base Styles Skeleton Framework http://getskeleton.com/ */

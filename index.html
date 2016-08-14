@@ -17,36 +17,16 @@
 </head>
 
 <body>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-10	">
-				<h1 id="topTitle">PATIALA : The Royal City</h1>
+
+			<div>
+				<div id="map"></div>
+				<input type="text" id="searchBox" list="placeList" class="menu" placeholder="Search" data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: searchModifier }"/>
+				<datalist id="placeList" data-bind="foreach: mapList">
+					<option data-bind="css: {active: selected}, text: name, visible: show, click: $parent.selectMarker">
+					</option>
+				</datalist>
 			</div>
 
-		</div>
-		<hr />
-		<div class="row" style="margin-top: 2%;">
-
-			<div class="col-md-10">
-		    	<div id="map"></div>
-			</div>
-
-			<div class="col-sm-2">
-				<div id="error"><h4><span data-bind="text: errorDisplay"></span></h4></div>
-				<div style="width: 100%;" class="input-group">
-					<input id="filterInputText" type="text" class="form-control" placeholder="Find Location..." data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: searchModifier }">
-				</div>
-			    <br>
-
-				<!-- KnockoutJS Binds these from mapList within the viewModel-->
-				<ul class="list-group" data-bind="foreach: mapList">
-				  <li><a class="list-group-item hvr-bounce-to-right" href="#" data-bind="css: {active: selected}, text: name, visible: show, click: $parent.selectMarker"></a>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</div>
 	<p id="map-error"></p>
 
 	<!--jQuery-->
