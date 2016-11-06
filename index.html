@@ -1,68 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Shivang's Neighborhood Map</title>
 
 	<!--Fonts-->
-  <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!--CSS-->
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!--CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<!-- Compiled and minified materialize lib -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 
 
 </head>
 
 <body>
 
-			<div>
-				<div id="map"></div>
-				<input type="text" id="searchBox" list="placeList" class="menu" placeholder="Search" data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: searchModifier }"/>
-				<datalist id="placeList" data-bind="foreach: mapList">
-					<option data-bind="css: {active: selected}, text: name, visible: show, click: $parent.selectMarker">
-					</option>
-				</datalist>
-			</div>
 
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo center">Neighborhood Maps</a>
+			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+			<ul class="left hide-on-med-and-down">
+				<li><a href="#" data-activates="slide-out" class="button"><i class="material-icons">menu</i></a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<ul id="slide-out" class="side-nav grey lighten-3">
+
+		<li>
+			<form>
+				<div class="input-field" id="search">
+					<input id="search" type="search" list="placeList" class="menu" data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: searchModifier }">
+					<label for="search"><i class="material-icons">search</i></label>
+					<i class="material-icons">close</i>
+				</div>
+			</form>
+		</li>
+		<ul class="list-group" data-bind="foreach: mapList">
+			<li class="locationList">
+				<a class="waves-effect waves-light" href="#" data-bind="css: {active: selected}, text: name, visible: show, click: $parent.selectMarker"></a>
+			</li>
+			<!-- <li><div class="divider"></div></li> -->
+		</ul>
+	</ul>
+
+	<div class="col-md-10">
+		<div id="map"></div>
+	</div>
+
+	</div>
 	<p id="map-error"></p>
+
+	<!--jQuery-->
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js'></script>
+	<script src="js/app.js"></script>
+
+	<script type="text/javascript">
+		var map, infoWindow;
+
+		function initMap() {
+			map = new google.maps.Map(
+				document.getElementById('map'), {
+					center: {
+						lat: 30.337501,
+						lng: 76.383205
+					},
+					zoom: 15,
+					mapTypeId: google.maps.MapTypeId.TERRAIN //type set to terrain
+				}
+			);
+			infowindow = new google.maps.InfoWindow();
+			//To Activate Knockout through app.js
+			ko.applyBindings(new ViewModel());
+		}
+
+		function mapError() {
+			document.getElementById('map-error').append = "Error in Map!"
+		}
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZFbc0O6X0lxBdrHgh8aN-syaZ3pr5mQ&callback=initMap" onerror="mapError()">
+	</script>
 
 
 	<!--jQuery-->
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js'></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="js/app.js"></script>
 
-	<script type="text/javascript">
-	    var map, infoWindow;
-	    function initMap() {
-	      map = new google.maps.Map(
-	          document.getElementById('map'),
-	          {
-	            center: {lat: 30.337501, lng: 76.383205},
-	            zoom: 15,
-	            mapTypeId: google.maps.MapTypeId.TERRAIN //type set to terrain
-	          }
-	        );
-
-	      infowindow = new google.maps.InfoWindow();
-	      //To Activate Knockout through app.js
-	      ko.applyBindings(new ViewModel());
-	    }
-	    function mapError(){
-	      document.getElementById('map-error').append = "Error in Map!"
-
-	    }
-	  </script>
-  <script async defer
-    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZFbc0O6X0lxBdrHgh8aN-syaZ3pr5mQ&callback=initMap" onerror="mapError()">
-  </script>
-
-
+	<script>
+		$(".button-collapse").sideNav();
+		$(".button").sideNav();
+	</script>
 
 </body>
+
 </html>

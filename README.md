@@ -19,3 +19,7 @@
 * Download the Project Zip
 * Open `index.html`
 * Click on the List or the Markers on Map to Show Likes & Ratings
+
+
+###TODO
+* fix bg for searchbar when clicked

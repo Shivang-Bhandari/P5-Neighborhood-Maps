@@ -70,7 +70,6 @@ var main = [
 // View Model
 
 var ViewModel = function() {
-
 	var self = this;
 	self.mapList = [];
 	self.errorDisplay = ko.observable("");
