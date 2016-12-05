@@ -1,5 +1,9 @@
 #map {
 	height: 100%;
-	width: 100%;
+  width: 100%;
 	position: absolute;
+}
+
+.input-field input[type=search]:focus {
+	background-color: #f5f5f5 !important;
 }
