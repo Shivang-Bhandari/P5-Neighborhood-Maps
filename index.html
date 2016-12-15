@@ -44,14 +44,19 @@
 		<li>
 			<h4 class="center">Locations</h3>
 	</li>
-		<li>
-			<form>
-				<div class="input-field" id="search">
+		<li class="search">
+			<div class="container">
+				<div class="search-wrapper focus" style="display:flex;">
 					<input id="search" type="search" list="placeList" class="menu" data-bind="value: filterText, valueUpdate: 'afterkeydown', event: { keyup: searchModifier }">
-					<label for="search"><i class="material-icons">search</i></label>
-					<i class="material-icons">close</i>
+					<label for="search" style="margin-top:4%;"><i class="material-icons">search</i></label>
+					<div class="search-results"></div>
 				</div>
-			</form>
+			</div>
+
+			<!-- <form>
+				<div class="input-field" id="search">
+				</div>
+			</form> -->
 		</li>
 		<ul class="list-group" data-bind="foreach: mapList">
 			<li class="locationList center">
