@@ -11,8 +11,7 @@
 * KnockoutJS
 * jQuery
 * FourSquare API
-* Bower Package Manager
-
+* Materialize Css
 
 
 #### How to Run
